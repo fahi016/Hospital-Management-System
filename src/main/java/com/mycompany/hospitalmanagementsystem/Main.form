@@ -61,7 +61,7 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton5" max="32767" attributes="0"/>
+                      <Component id="checkAppointment" max="32767" attributes="0"/>
                       <Component id="getAppointment" alignment="0" max="32767" attributes="0"/>
                       <Component id="viewDoctors" alignment="0" max="32767" attributes="0"/>
                       <Component id="searchDoctor" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
@@ -98,7 +98,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="viewPatients" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                              <Component id="jButton5" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                              <Component id="checkAppointment" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -178,7 +178,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewPatientsActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton5">
+        <Component class="javax.swing.JButton" name="checkAppointment">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="92" green="77" red="54" type="rgb"/>
@@ -188,6 +188,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Check Appointment"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkAppointmentActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="viewDoctors">
           <Properties>

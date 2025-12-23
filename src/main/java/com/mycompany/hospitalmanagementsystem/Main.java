@@ -34,7 +34,7 @@ public class Main extends javax.swing.JFrame {
         searchPatient = new javax.swing.JButton();
         deletePatient = new javax.swing.JButton();
         viewPatients = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        checkAppointment = new javax.swing.JButton();
         viewDoctors = new javax.swing.JButton();
         getAppointment = new javax.swing.JButton();
         searchDoctor = new javax.swing.JButton();
@@ -70,9 +70,10 @@ public class Main extends javax.swing.JFrame {
         viewPatients.setText("View Patients");
         viewPatients.addActionListener(this::viewPatientsActionPerformed);
 
-        jButton5.setBackground(new java.awt.Color(84, 119, 146));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton5.setText("Check Appointment");
+        checkAppointment.setBackground(new java.awt.Color(84, 119, 146));
+        checkAppointment.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        checkAppointment.setText("Check Appointment");
+        checkAppointment.addActionListener(this::checkAppointmentActionPerformed);
 
         viewDoctors.setBackground(new java.awt.Color(84, 119, 146));
         viewDoctors.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -103,7 +104,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(addPatient, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(checkAppointment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(getAppointment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(viewDoctors, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(searchDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -134,7 +135,7 @@ public class Main extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(viewPatients, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(checkAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
 
@@ -198,6 +199,12 @@ public class Main extends javax.swing.JFrame {
         deletePatient.show();
     }//GEN-LAST:event_deletePatientActionPerformed
 
+    private void checkAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAppointmentActionPerformed
+        // TODO add your handling code here:
+        CheckAppointment checkAppointment = new CheckAppointment();
+        checkAppointment.show();
+    }//GEN-LAST:event_checkAppointmentActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -225,9 +232,9 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addPatient;
+    private javax.swing.JButton checkAppointment;
     private javax.swing.JButton deletePatient;
     private javax.swing.JButton getAppointment;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton searchDoctor;
