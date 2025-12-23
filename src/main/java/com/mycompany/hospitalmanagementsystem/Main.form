@@ -56,7 +56,7 @@
                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jButton3" max="32767" attributes="0"/>
                           <Component id="jButton2" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jButton1" alignment="1" min="-2" pref="156" max="-2" attributes="0"/>
+                          <Component id="addPatient" alignment="1" min="-2" pref="156" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -84,7 +84,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jButton8" min="-2" pref="48" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jButton1" min="-2" pref="48" max="-2" attributes="0"/>
+                          <Component id="addPatient" min="-2" pref="48" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jButton2" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
@@ -122,7 +122,7 @@
             <Property name="text" type="java.lang.String" value="Hospital Management System"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="addPatient">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="92" green="77" red="54" type="rgb"/>
@@ -132,6 +132,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Add Patient"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addPatientActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
