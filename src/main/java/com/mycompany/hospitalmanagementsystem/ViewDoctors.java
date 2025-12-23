@@ -1,21 +1,22 @@
+package com.mycompany.hospitalmanagementsystem;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.hospitalmanagementsystem;
 
 /**
  *
  * @author Mohammed Faheem P
  */
-public class SearchDoctor extends javax.swing.JFrame {
+public class ViewDoctors extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SearchDoctor.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ViewDoctors.class.getName());
 
     /**
-     * Creates new form SearchDoctor
+     * Creates new form ViewDoctor
      */
-    public SearchDoctor() {
+    public ViewDoctors() {
         initComponents();
     }
 
@@ -30,9 +31,7 @@ public class SearchDoctor extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        doctorID = new javax.swing.JTextField();
-        searchPatient = new javax.swing.JButton();
+        viewDoctors = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         Table = new javax.swing.JTable();
 
@@ -44,20 +43,13 @@ public class SearchDoctor extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Search Doctor");
+        jLabel1.setText("View Doctors");
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Doctor id: ");
-
-        doctorID.addActionListener(this::doctorIDActionPerformed);
-
-        searchPatient.setBackground(new java.awt.Color(84, 119, 146));
-        searchPatient.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        searchPatient.setForeground(new java.awt.Color(255, 255, 255));
-        searchPatient.setText("Search");
-        searchPatient.addActionListener(this::searchPatientActionPerformed);
+        viewDoctors.setBackground(new java.awt.Color(84, 119, 146));
+        viewDoctors.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        viewDoctors.setForeground(new java.awt.Color(255, 255, 255));
+        viewDoctors.setText("View");
+        viewDoctors.addActionListener(this::viewDoctorsActionPerformed);
 
         Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -82,34 +74,23 @@ public class SearchDoctor extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(182, 182, 182)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(jLabel2)
-                        .addGap(44, 44, 44)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(doctorID, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(searchPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(17, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewDoctors, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(doctorID, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(searchPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(viewDoctors, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -123,17 +104,15 @@ public class SearchDoctor extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jPanel1.getAccessibleContext().setAccessibleName("ViewDoctors");
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void doctorIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorIDActionPerformed
+    private void viewDoctorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDoctorsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_doctorIDActionPerformed
-
-    private void searchPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchPatientActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchPatientActionPerformed
+    }//GEN-LAST:event_viewDoctorsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,16 +136,14 @@ public class SearchDoctor extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new SearchDoctor().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new ViewDoctors().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Table;
-    private javax.swing.JTextField doctorID;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton searchPatient;
+    private javax.swing.JButton viewDoctors;
     // End of variables declaration//GEN-END:variables
 }
