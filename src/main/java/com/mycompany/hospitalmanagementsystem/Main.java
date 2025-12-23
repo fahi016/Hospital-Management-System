@@ -158,12 +158,14 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         GetAppointment getAppointment = new GetAppointment();
         getAppointment.show();
+        dispose();
     }//GEN-LAST:event_getAppointmentActionPerformed
 
     private void addPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPatientActionPerformed
         // TODO add your handling code here:
         AddPatient addPatient = new AddPatient();
         addPatient.show();
+        dispose();
 
         
     }//GEN-LAST:event_addPatientActionPerformed
@@ -172,18 +174,21 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         SearchPatient searchPatient = new SearchPatient();
         searchPatient.show();
+        dispose();
     }//GEN-LAST:event_searchPatientActionPerformed
 
     private void searchDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchDoctorActionPerformed
         // TODO add your handling code here:
         SearchDoctor searchDoctor = new SearchDoctor();
         searchDoctor.show();
+        dispose();
     }//GEN-LAST:event_searchDoctorActionPerformed
 
     private void viewDoctorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDoctorsActionPerformed
         // TODO add your handling code here:
         ViewDoctors viewDoctors = new ViewDoctors();
         viewDoctors.show();
+        dispose();
         
     }//GEN-LAST:event_viewDoctorsActionPerformed
 
@@ -191,18 +196,21 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         ViewPatients viewPatients = new ViewPatients();
         viewPatients.show();
+        dispose();
     }//GEN-LAST:event_viewPatientsActionPerformed
 
     private void deletePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePatientActionPerformed
         // TODO add your handling code here:
         DeletePatient deletePatient = new DeletePatient();
         deletePatient.show();
+        dispose();
     }//GEN-LAST:event_deletePatientActionPerformed
 
     private void checkAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAppointmentActionPerformed
         // TODO add your handling code here:
         CheckAppointment checkAppointment = new CheckAppointment();
         checkAppointment.show();
+        dispose();
     }//GEN-LAST:event_checkAppointmentActionPerformed
 
     /**
