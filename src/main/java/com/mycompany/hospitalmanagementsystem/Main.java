@@ -32,7 +32,7 @@ public class Main extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         addPatient = new javax.swing.JButton();
         searchPatient = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        deletePatient = new javax.swing.JButton();
         viewPatients = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         viewDoctors = new javax.swing.JButton();
@@ -60,9 +60,10 @@ public class Main extends javax.swing.JFrame {
         searchPatient.setText("Search Patient");
         searchPatient.addActionListener(this::searchPatientActionPerformed);
 
-        jButton3.setBackground(new java.awt.Color(84, 119, 146));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton3.setText("Delete Patient");
+        deletePatient.setBackground(new java.awt.Color(84, 119, 146));
+        deletePatient.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        deletePatient.setText("Delete Patient");
+        deletePatient.addActionListener(this::deletePatientActionPerformed);
 
         viewPatients.setBackground(new java.awt.Color(84, 119, 146));
         viewPatients.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -97,7 +98,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(viewPatients, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(deletePatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(searchPatient, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(addPatient, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -128,7 +129,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(viewDoctors, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deletePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -189,6 +190,12 @@ public class Main extends javax.swing.JFrame {
         viewPatients.show();
     }//GEN-LAST:event_viewPatientsActionPerformed
 
+    private void deletePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePatientActionPerformed
+        // TODO add your handling code here:
+        DeletePatient deletePatient = new DeletePatient();
+        deletePatient.show();
+    }//GEN-LAST:event_deletePatientActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -216,7 +223,7 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addPatient;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton deletePatient;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;

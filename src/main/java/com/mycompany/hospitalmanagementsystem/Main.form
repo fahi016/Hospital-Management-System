@@ -54,7 +54,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="viewPatients" min="-2" pref="156" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton3" max="32767" attributes="0"/>
+                          <Component id="deletePatient" max="32767" attributes="0"/>
                           <Component id="searchPatient" alignment="1" max="32767" attributes="0"/>
                           <Component id="addPatient" alignment="1" min="-2" pref="156" max="-2" attributes="0"/>
                       </Group>
@@ -92,7 +92,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton3" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                              <Component id="deletePatient" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                               <Component id="jButton7" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -150,7 +150,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchPatientActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="deletePatient">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="92" green="77" red="54" type="rgb"/>
@@ -160,6 +160,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Delete Patient"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deletePatientActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="viewPatients">
           <Properties>
