@@ -33,7 +33,7 @@ public class Main extends javax.swing.JFrame {
         addPatient = new javax.swing.JButton();
         searchPatient = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        viewPatients = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         viewDoctors = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -64,9 +64,10 @@ public class Main extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setText("Delete Patient");
 
-        jButton4.setBackground(new java.awt.Color(84, 119, 146));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton4.setText("View Patient");
+        viewPatients.setBackground(new java.awt.Color(84, 119, 146));
+        viewPatients.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        viewPatients.setText("View Patients");
+        viewPatients.addActionListener(this::viewPatientsActionPerformed);
 
         jButton5.setBackground(new java.awt.Color(84, 119, 146));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -94,7 +95,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(80, 80, 80)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewPatients, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(searchPatient, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -131,7 +132,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewPatients, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
@@ -182,6 +183,12 @@ public class Main extends javax.swing.JFrame {
         
     }//GEN-LAST:event_viewDoctorsActionPerformed
 
+    private void viewPatientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientsActionPerformed
+        // TODO add your handling code here:
+        ViewPatients viewPatients = new ViewPatients();
+        viewPatients.show();
+    }//GEN-LAST:event_viewPatientsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -210,7 +217,6 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addPatient;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
@@ -218,5 +224,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton searchDoctor;
     private javax.swing.JButton searchPatient;
     private javax.swing.JButton viewDoctors;
+    private javax.swing.JButton viewPatients;
     // End of variables declaration//GEN-END:variables
 }
