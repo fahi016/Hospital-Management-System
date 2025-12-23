@@ -36,7 +36,7 @@ public class Main extends javax.swing.JFrame {
         viewPatients = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         viewDoctors = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        getAppointment = new javax.swing.JButton();
         searchDoctor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,10 +79,10 @@ public class Main extends javax.swing.JFrame {
         viewDoctors.setText("View Doctors");
         viewDoctors.addActionListener(this::viewDoctorsActionPerformed);
 
-        jButton7.setBackground(new java.awt.Color(84, 119, 146));
-        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton7.setText("Get Appointment");
-        jButton7.addActionListener(this::jButton7ActionPerformed);
+        getAppointment.setBackground(new java.awt.Color(84, 119, 146));
+        getAppointment.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getAppointment.setText("Get Appointment");
+        getAppointment.addActionListener(this::getAppointmentActionPerformed);
 
         searchDoctor.setBackground(new java.awt.Color(84, 119, 146));
         searchDoctor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -104,7 +104,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(getAppointment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(viewDoctors, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(searchDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(82, 82, 82))
@@ -130,7 +130,7 @@ public class Main extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(deletePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(getAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(viewPatients, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,9 +153,11 @@ public class Main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void getAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getAppointmentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+        GetAppointment getAppointment = new GetAppointment();
+        getAppointment.show();
+    }//GEN-LAST:event_getAppointmentActionPerformed
 
     private void addPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPatientActionPerformed
         // TODO add your handling code here:
@@ -224,8 +226,8 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addPatient;
     private javax.swing.JButton deletePatient;
+    private javax.swing.JButton getAppointment;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton searchDoctor;

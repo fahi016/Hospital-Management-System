@@ -62,7 +62,7 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jButton5" max="32767" attributes="0"/>
-                      <Component id="jButton7" alignment="0" max="32767" attributes="0"/>
+                      <Component id="getAppointment" alignment="0" max="32767" attributes="0"/>
                       <Component id="viewDoctors" alignment="0" max="32767" attributes="0"/>
                       <Component id="searchDoctor" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
                   </Group>
@@ -93,7 +93,7 @@
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="deletePatient" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                              <Component id="jButton7" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                              <Component id="getAppointment" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -203,7 +203,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewDoctorsActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton7">
+        <Component class="javax.swing.JButton" name="getAppointment">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="92" green="77" red="54" type="rgb"/>
@@ -214,7 +214,7 @@
             <Property name="text" type="java.lang.String" value="Get Appointment"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getAppointmentActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="searchDoctor">
