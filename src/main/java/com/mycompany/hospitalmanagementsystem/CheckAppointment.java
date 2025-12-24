@@ -4,6 +4,14 @@
  */
 package com.mycompany.hospitalmanagementsystem;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Mohammed Faheem P
@@ -31,7 +39,7 @@ public class CheckAppointment extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        patientID = new javax.swing.JTextField();
+        appointmentID = new javax.swing.JTextField();
         checkAppointment = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         Table = new javax.swing.JTable();
@@ -50,9 +58,9 @@ public class CheckAppointment extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Patient id: ");
+        jLabel2.setText("Appointment id: ");
 
-        patientID.addActionListener(this::patientIDActionPerformed);
+        appointmentID.addActionListener(this::appointmentIDActionPerformed);
 
         checkAppointment.setBackground(new java.awt.Color(84, 119, 146));
         checkAppointment.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
@@ -65,11 +73,11 @@ public class CheckAppointment extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Ptient ID", "Doctor ID", "Date"
+                "AppointmentID", "Ptient ID", "Doctor ID", "date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -97,13 +105,13 @@ public class CheckAppointment extends javax.swing.JFrame {
                             .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(44, 44, 44)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(patientID, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(appointmentID, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(182, 182, 182)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +120,7 @@ public class CheckAppointment extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(patientID, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(appointmentID, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(checkAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,7 +138,7 @@ public class CheckAppointment extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,12 +151,66 @@ public class CheckAppointment extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void patientIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientIDActionPerformed
+    private void appointmentIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appointmentIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_patientIDActionPerformed
+    }//GEN-LAST:event_appointmentIDActionPerformed
 
     private void checkAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAppointmentActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)Table.getModel();
+        try{
+         String inputAppointmentId = appointmentID.getText().trim();
+         if(inputAppointmentId.isEmpty()){
+                 JOptionPane.showMessageDialog(this, "Appointment ID can't be empty.");
+                 return;
+           }       
+        int appointmentId = Integer.parseInt(inputAppointmentId);
+        if(appointmentId<=0){
+          JOptionPane.showMessageDialog(this, "Appointment ID must be a positive number.");
+          return;
+        }
+        Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            Connection connection = DriverManager.getConnection(
+                 "jdbc:mysql://127.0.0.1:3306/hospital",
+                     "root",
+                     "password"
+            );
+            
+            String query = "SELECT * FROM appointment WHERE appointmentID=?";
+            PreparedStatement psmt = connection.prepareStatement(query);
+            psmt.setString(1,inputAppointmentId);
+            ResultSet rs = psmt.executeQuery();
+            
+            
+            while(rs.next()){
+               String  appId = Integer.toString(rs.getInt("appointmentID"));
+               String  pid = Integer.toString(rs.getInt("pid"));
+               String did = rs.getString("did");
+               String date = rs.getString("date");
+               String row[] = {appId,pid,did,date};
+               model.addRow(row);
+            
+            }
+            if(model.getRowCount() ==0){
+                JOptionPane.showMessageDialog(this, "No results found.");
+                return;
+             }
+            connection.close();
+            
+                    
+        
+         
+        
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Please enter valid numeric values");
+        }
+        catch(ClassNotFoundException e){
+            JOptionPane.showMessageDialog(this, "MySQL driver not found.");
+        }
+        catch(SQLException  e){
+            JOptionPane.showMessageDialog(this, "Database error: "+e.getMessage());
+        }
     }//GEN-LAST:event_checkAppointmentActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
@@ -185,12 +247,12 @@ public class CheckAppointment extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Table;
+    private javax.swing.JTextField appointmentID;
     private javax.swing.JButton back;
     private javax.swing.JButton checkAppointment;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField patientID;
     // End of variables declaration//GEN-END:variables
 }
