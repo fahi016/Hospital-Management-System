@@ -4,6 +4,14 @@
  */
 package com.mycompany.hospitalmanagementsystem;
 
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Mohammed Faheem P
@@ -17,6 +25,7 @@ public class GetAppointment extends javax.swing.JFrame {
      */
     public GetAppointment() {
         initComponents();
+        addDateFieldHint();
     }
 
     /**
@@ -159,7 +168,88 @@ public class GetAppointment extends javax.swing.JFrame {
 
     private void bookAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookAppointmentActionPerformed
         // TODO add your handling code here:
+        try{
+           String inputPatientId = patientID.getText().trim();
+           if(inputPatientId.isEmpty()){
+                 JOptionPane.showMessageDialog(this, "Patient ID can't be empty.");
+                 return;
+           }       
+        int patientId = Integer.parseInt(inputPatientId);
+        if(patientId<=0){
+          JOptionPane.showMessageDialog(this, "Patient ID must be a positive number.");
+          return;
+        }
+        
+        String inputDoctorId = doctorID.getText().trim();
+           if(inputDoctorId.isEmpty()){
+                 JOptionPane.showMessageDialog(this, "Doctor ID can't be empty.");
+                 return;
+           }       
+        int doctorId = Integer.parseInt(inputDoctorId);
+        if(doctorId<=0){
+          JOptionPane.showMessageDialog(this, "Doctor ID must be a positive number.");
+          return;
+        }
+        
+        String inputDate = date.getText().trim();
+        if(inputDate.isEmpty()){
+                 JOptionPane.showMessageDialog(this, "Date can't be empty.");
+                 return;
+           } 
+        
+        if(!inputDate.matches("^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\\d{4}$")){
+            JOptionPane.showMessageDialog(this, "Invalid Date Format.");
+            return;
+          
+        }
+        
+        Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            Connection connection = DriverManager.getConnection(
+                 "jdbc:mysql://127.0.0.1:3306/hospital",
+                     "root",
+                     "password"
+            );
+            
+            String query = "INSERT INTO appointment VALUES(?,?,?)";
+            PreparedStatement psmt = connection.prepareStatement(query);
+            psmt.setInt(1, patientId);
+            psmt.setInt(2, doctorId);
+            psmt.setString(3, inputDate);
+            psmt.executeUpdate();
+            connection.close();
+            JOptionPane.showMessageDialog(this,"Appointment booked successfully");
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Please enter valid numeric values");
+        }
+        catch(ClassNotFoundException e){
+            JOptionPane.showMessageDialog(this, "MySQL driver not found.");
+        }
+        catch(SQLException  e){
+            JOptionPane.showMessageDialog(this, "Database error: "+e.getMessage());
+        }
     }//GEN-LAST:event_bookAppointmentActionPerformed
+       
+    private void addDateFieldHint() {
+    date.setText("DD-MM-YYYY");
+
+    date.addFocusListener(new FocusAdapter() {
+        @Override
+        public void focusGained(FocusEvent e) {
+            if (date.getText().equals("DD-MM-YYYY")) {
+                date.setText("");
+            }
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+            if (date.getText().isEmpty()) {
+                date.setText("DD-MM-YYYY");
+            }
+        }
+    });
+}
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
