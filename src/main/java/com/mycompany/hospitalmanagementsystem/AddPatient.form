@@ -83,8 +83,8 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="addPatient" min="-2" pref="75" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="DoctorName" alignment="1" min="-2" pref="244" max="-2" attributes="0"/>
-                                          <Component id="PatientAge" alignment="1" min="-2" pref="244" max="-2" attributes="0"/>
+                                          <Component id="doctorName" alignment="1" min="-2" pref="244" max="-2" attributes="0"/>
+                                          <Component id="patientAge" alignment="1" min="-2" pref="244" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -113,12 +113,12 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="PatientAge" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="patientAge" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="DoctorName" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="doctorName" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -180,7 +180,7 @@
             <Property name="text" type="java.lang.String" value="Patient Name: "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="PatientAge">
+        <Component class="javax.swing.JTextField" name="patientAge">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -196,7 +196,7 @@
             <Property name="text" type="java.lang.String" value="Patient Age: "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="DoctorName">
+        <Component class="javax.swing.JTextField" name="doctorName">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>

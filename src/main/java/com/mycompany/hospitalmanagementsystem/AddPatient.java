@@ -1,5 +1,11 @@
 package com.mycompany.hospitalmanagementsystem;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -35,9 +41,9 @@ public class AddPatient extends javax.swing.JFrame {
         patientID = new javax.swing.JTextField();
         patientName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        PatientAge = new javax.swing.JTextField();
+        patientAge = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        DoctorName = new javax.swing.JTextField();
+        doctorName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         addPatient = new javax.swing.JButton();
         back = new javax.swing.JButton();
@@ -118,8 +124,8 @@ public class AddPatient extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(addPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(DoctorName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(PatientAge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(doctorName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(patientAge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(141, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -138,11 +144,11 @@ public class AddPatient extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PatientAge, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(patientAge, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DoctorName, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(doctorName, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,6 +179,81 @@ public class AddPatient extends javax.swing.JFrame {
 
     private void addPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPatientActionPerformed
         // TODO add your handling code here:
+        try{
+            String inputPatientId = patientID.getText().trim();
+            if(inputPatientId.isEmpty()){
+                 JOptionPane.showMessageDialog(this, "Patient ID can't be empty.");
+                 return;
+           }       
+        int patientId = Integer.parseInt(inputPatientId);
+        if(patientId<=0){
+          JOptionPane.showMessageDialog(this, "Patient ID must be a positive number.");
+          return;
+        }
+        
+        
+        String inputPatientName = patientName.getText().trim();
+        if(inputPatientName.isEmpty()){
+          JOptionPane.showMessageDialog(this, "Patient Name can't be empty.");
+          return;
+        }
+        if(!inputPatientName.matches("[A-Za-z ]+")){
+            JOptionPane.showMessageDialog(this, "Patient Name must contain only letters.");
+          return;
+        }
+        
+        
+        String inputPatientAge = patientAge.getText().trim();
+        if(inputPatientAge.isEmpty()){
+          JOptionPane.showMessageDialog(this, "Patient Age can't be empty.");
+          return;
+        }
+        int patientAge = Integer.parseInt(inputPatientAge);
+        if(patientAge<=0 || patientAge>120){
+        
+          JOptionPane.showMessageDialog(this, "Enter a valid Age(1-120)");
+          return;
+        }
+        
+        String inputDoctorName = doctorName.getText().trim();
+        if(inputDoctorName.isEmpty()){
+          JOptionPane.showMessageDialog(this, "Doctor name can't be empty.");
+          return;
+        }
+        
+         if(!inputDoctorName.matches("[a-zA-Z ]+")) {
+        JOptionPane.showMessageDialog(this, "Doctor name must contain only letters");
+        return;
+    }
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            Connection connection = DriverManager.getConnection(
+                 "jdbc:mysql://127.0.0.1:3306/hospital",
+                     "root",
+                     "password"
+            );
+            String query = "INSERT INTO patient VALUES(?,?,?,?)";
+            
+            PreparedStatement psmt = connection.prepareStatement(query);
+            psmt.setInt(1,patientId);
+            psmt.setString(2, inputPatientName);
+            psmt.setInt(3, patientAge);
+            psmt.setString(4, inputDoctorName);
+            psmt.executeUpdate();
+            connection.close();
+            JOptionPane.showMessageDialog(this, "Patient data added successfully");
+            
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Please enter valid numeric values");
+        }
+        catch(ClassNotFoundException e){
+            JOptionPane.showMessageDialog(this, "MySQL driver not found.");
+        }
+        catch(SQLException  e){
+            JOptionPane.showMessageDialog(this, "Database error: "+e.getMessage());
+        }
+        
     }//GEN-LAST:event_addPatientActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
@@ -208,16 +289,16 @@ public class AddPatient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField DoctorName;
-    private javax.swing.JTextField PatientAge;
     private javax.swing.JButton addPatient;
     private javax.swing.JButton back;
+    private javax.swing.JTextField doctorName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField patientAge;
     private javax.swing.JTextField patientID;
     private javax.swing.JTextField patientName;
     // End of variables declaration//GEN-END:variables
