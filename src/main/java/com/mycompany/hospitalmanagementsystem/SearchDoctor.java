@@ -4,6 +4,14 @@
  */
 package com.mycompany.hospitalmanagementsystem;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Mohammed Faheem P
@@ -147,6 +155,59 @@ public class SearchDoctor extends javax.swing.JFrame {
 
     private void searchPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchPatientActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)Table.getModel();
+        try{
+         String inputDoctorId = doctorID.getText().trim();
+         if(inputDoctorId.isEmpty()){
+                 JOptionPane.showMessageDialog(this, "Doctor ID can't be empty.");
+                 return;
+           }       
+        int docotorId = Integer.parseInt(inputDoctorId);
+        if(docotorId<=0){
+          JOptionPane.showMessageDialog(this, "Doctor ID must be a positive number.");
+          return;
+        }
+        Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            Connection connection = DriverManager.getConnection(
+                 "jdbc:mysql://127.0.0.1:3306/hospital",
+                     "root",
+                     "password"
+            );
+            
+            String query = "SELECT * FROM doctor WHERE ID=?";
+            PreparedStatement psmt = connection.prepareStatement(query);
+            psmt.setString(1,inputDoctorId);
+            ResultSet rs = psmt.executeQuery();
+            
+            
+            while(rs.next()){
+               String  did = Integer.toString(rs.getInt("ID"));
+               String dName = rs.getString("name");
+               String dept = rs.getString("department");
+               String row[] = {did,dName,dept};
+               model.addRow(row);
+            
+            }
+            if(model.getRowCount() ==0){
+                JOptionPane.showMessageDialog(this, "No results found.");
+                return;
+             }
+            connection.close();
+            
+                    
+        
+         
+        
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Please enter valid numeric values");
+        }
+        catch(ClassNotFoundException e){
+            JOptionPane.showMessageDialog(this, "MySQL driver not found.");
+        }
+        catch(SQLException  e){
+            JOptionPane.showMessageDialog(this, "Database error: "+e.getMessage());
+        }
     }//GEN-LAST:event_searchPatientActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
